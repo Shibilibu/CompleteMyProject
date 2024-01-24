@@ -1,0 +1,27 @@
+{% extends 'Guide/InternalsHome.html' %}
+{% block body %}
+<form action="/ViewAssignedGrp" method="post">
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Assigned Group</h6>
+            </div>
+<table class="table" border="1">
+  <tr style="background: #2bc5d4; color: black;">
+    <th>Id</th>
+    <th>GroupNumber</th>
+    <th>Email</th>
+       <th>TopicName</th>
+  </tr>
+   {% for i in view %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.GroupNumber }}</td>
+    <td>{{ i.Email }}</td>
+  <td>{{ i.TopicName }}</td>
+ 
+    
+  </tr>
+   {% endfor %}
+</table>
+
+</form>
+{% endblock %}

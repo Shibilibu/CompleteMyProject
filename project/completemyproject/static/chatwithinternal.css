@@ -1,0 +1,26 @@
+.internalchat{
+    color: #000001;
+	background: #b73770;
+	padding: 20px;
+	border-radius: 5px;
+}
+
+.Externalchat{
+    color: black;
+	background: #bae3d7;
+	padding: 20px;
+	border-radius: 5px;
+}
+
+.chat-internal  {
+	background-image: url("../static/college.jpg");
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-attachment: fixed;
+}
+.header {
+	background-image: url("../static/college.jpg");
+	background-repeat: no-repeat;
+	background-position: right top;
+	background-attachment: scroll;
+}

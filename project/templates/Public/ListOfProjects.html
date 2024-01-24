@@ -1,0 +1,25 @@
+{% extends 'Mainpage/index.html' %}
+{% block body %}
+<form action="/" method="post">
+
+<table style="width: 500px; border-left-color: black; border-right-color: black; border-top-color: black; border-bottom-color: black; color:black;" class="table" border="4" align="center">
+  <tr style="background:  #2bc5d4; color: black;">
+    <th scope="row">Id</th>
+    <th>Projects</th>
+
+
+    
+  </tr>
+   {% for i in projects %}
+  <tr style="background: #e7ffe5;">
+    <td>{{ forloop.counter }}</td>
+    <td style="color: red;">{{ i.TopicName }}</td>
+
+    
+  </tr>
+   {% endfor %}
+</table>
+
+</form>
+
+{% endblock %}

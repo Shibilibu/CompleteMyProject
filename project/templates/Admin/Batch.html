@@ -1,0 +1,33 @@
+{% extends 'Admin/AdminHome.html' %}
+{% block body %}
+<form action="/Batch_student_post" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Batch</h6>
+            </div>
+<table style="width: 600px; height: 50px; background: #2bc5d4; color: black; border-bottom-color: black; border-top-color: black; border-right-color: black; border-left-color: black;"  class="table" border="4" align="center">
+  
+ 
+  <tr>
+    <th scope="row">Batch:</th>
+    <td><label for="batch"></label>
+      <select name="btch" size="1" id="batch" style="width:95%;" required>
+        <option value="Others">Others</option>
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+      </select></td>
+  </tr>
+     
+ <td colspan="2">
+      <div align="center">
+          <button type="submit" value="add" style="color: black" class="btn btn-outline-secondary btn-success" >ADD</button>
+      </div>
+  </td>
+</table>
+
+</form>
+{% endblock %}

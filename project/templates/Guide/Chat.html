@@ -1,0 +1,95 @@
+{% extends 'Guide/InternalsHome.html' %}
+{% block body %}
+{#    <link rel="stylesheet" href="/static/chat.css">#}
+{#<form action="/Sendmessage" method="post">#}
+{#{% csrf_token %}#}
+{#<div class="text-center wow fadeInUp" data-wow-delay="0.1s">#}
+{#                <h6 class="section-title bg-white text-center text-primary px-3">Chat</h6>#}
+{#            </div>#}
+{# <div  class="container-fluid bg-dark text-light chat-background " style="width: 100%; height: 100%">#}
+{#   <div  class="container py-18" >#}
+{#<table class="table" border="0" align="center" style="color: black;">#}
+{#<tr>#}
+{#			<td colspan="2"></td>#}
+{#  		</tr>#}
+{#		{%for i in data%}#}
+{#		{%if i.SendType == 'Internal'%}#}
+{#		<tr align="right" >#}
+{#			<td  colspan="2" style= width:0;height:0;border-style:solid;border-width:0 10px 10px 10px;><span class="internal">{{i.Message}}<br></span></td>#}
+{#  		</tr>#}
+{#		{% elif i.SendType == 'External' %}#}
+{##}
+{#  <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2"><span class="visually-hidden-focusable">unread messages</span></span>#}
+{##}
+{##}
+{#		<tr >#}
+{#            <td  colspan="2"  style= width:0;height:0;border-style:solid;border-width:0 10px 10px 10px;><span class="External">{{i.Message}}<br></span></td>#}
+{#  		</tr>#}
+{#		{%endif%}#}
+{#		{%endfor%}#}
+{#		<tr>#}
+{#			<td colspan="2">&nbsp;</td>#}
+{#  		</tr>#}
+{#    <tr><td   colspan="2" class="center"><input type="text"  style="width: 90%; background: #b6effb;" id="text"  placeholder="Type a message" name="msge" required  />#}
+{#     <button type="submit" name="SEND" class="btn btn-success"> Send</button> </td></tr>#}
+{#	</table>#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{# </div>#}
+{#    </div>#}
+{#</form>#}
+
+  <link rel="stylesheet" href="stylechat.css">
+   <script>
+   let counter =0;
+   function message() {
+       counter++
+       alert(`${counter} message sented successfully`)
+   }
+   </script>
+  <header>
+    <h1>Real-Time Chat Application</h1>
+  </header>
+    <form action="/Sendmessage" method="post">
+{% csrf_token %}
+  <div class="container">
+    <div class="chat-window">
+      <div class="chat-area">
+        <div class="chat-messages">
+<table class="table" border="0" align="center" style="color: black;">
+<tr>
+			<td colspan="2"></td>
+  		</tr>
+		{%for i in data%}
+		{%if i.SendType == 'Internal'%}
+		<tr align="right" >
+			<td  colspan="2" style= width:0;height:0;border-style:solid;border-width:0 10px 10px 10px;><span class="internal">{{i.Message}}<br></span></td>
+  		</tr>
+		{% elif i.SendType == 'External' %}
+
+  <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2"><span class="visually-hidden-focusable">unread messages</span></span>
+
+
+		<tr >
+            <td  colspan="2"  style= width:0;height:0;border-style:solid;border-width:0 10px 10px 10px;><span class="External">{{i.Message}}<br></span></td>
+  		</tr>
+		{%endif%}
+		{%endfor%}
+
+
+          <!-- Chat Messages -->
+</table>
+        </div>
+      </div>
+      <div class="user-input">
+        <input type="text" id="message-input" name="msge" placeholder="Type your message...">
+        <button onclick="message()" id="send-button">Send</button>
+      </div>
+    </div>
+  </div>
+
+    </form>
+{% endblock %}

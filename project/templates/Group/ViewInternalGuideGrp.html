@@ -1,0 +1,28 @@
+{% extends 'Group/GroupViewProject.html' %}
+{% block body %}
+<form action="/" method="post">
+<table class="table" border="1">
+  <tr style="background: #2bc5d4; color: black;">
+    <th scope="row">Id</th>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Position</th>
+    <th>Email</th>
+    <th>Mobile</th>
+  </tr>
+    {% for i in intern %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.Name }}</td>
+    <td>{{ i.Gender }}</td>
+    <td>{{ i.Position }}</td>
+    <td>{{ i.Email }}</td>
+    <td>{{ i.Mobile }}</td>
+    
+    
+  </tr>
+{% endfor %}
+</table>
+
+</form>
+{% endblock %}

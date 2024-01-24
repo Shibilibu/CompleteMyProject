@@ -1,0 +1,75 @@
+{% extends 'Admin/AdminHome.html' %}
+{% block body %}
+<form action="/EditGuide_post/{{ eid }}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Edit InternalGuide Details here</h6>
+            </div>
+<table width="500" class="table" border="1" align="center" style="width: 600px; height: 200px; background: #2bc5d4; color: black; border-bottom-color: black; border-top-color: black; border-right-color: black; border-left-color: black;">
+  <tr>
+    <th scope="row">Name:</th>
+    <td><label for="Name"></label>
+      <input type="text" name="name" id="Name"  placeholder="Enter Your Name"style="width:95%; " value="{{ edit.Name }}"/></td>
+  </tr>
+   <tr>
+    <th scope="row">Gender:</th>
+    <td colspan="2"><table width="200">
+      <tr>
+        <td><label>
+            <input type="radio" name="gender" value="Male" id="gender_0" {% if edit.Gender == 'Male'%} checked{% endif %} />
+            Male</label></td>
+        </tr>
+        <tr>
+          <td><label>
+            <input type="radio" name="gender" value="Female" id="gender_1" {% if edit.Gender == 'Female' %} checked {% endif %} />
+            Female</label></td>
+        </tr>
+        <tr>
+          <td><label>
+            <input type="radio" name="gender" value="Others" id="gender_2" {% if edit.Gender == 'Others'%} checked{% endif %}/>
+            Others</label></td>
+        </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <th scope="row">Position:</th>
+    <td><label for="dist"></label>
+      <select name="position" size="1" id="pos" style="width:95%;" >
+
+      <option value="{% if data.Position == 'Others' %} selected {% endif %}">Others</option>
+        <option value="{% if data.Position == 'ATC Teacher' %} selected {% endif %}">ATC Teacher</option>
+        <option value="{% if data.Position == 'DAA Teacher' %} selected {% endif %}">DAA Teacher</option>
+        <option value="{% if data.Position == 'SE Teacher' %} selected {% endif %}">SE Teacher</option>
+
+      </select></td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">Email:</th>
+    <td><label for="email"></label>
+      <input type="email" name="email" id="email" placeholder="Enter Your EmailId" style="width:95%;" value="{{ edit.Email }}"  /></td>
+  </tr>
+  <tr>
+    <th scope="row">Mobile:</th>
+    <td>
+        <select>
+            <option value="{% if edit.Mobile == '+91' %} selected {% endif %}">+91</option>
+            <option value="{% if edit.Mobile == '+81' %} selected {% endif %}">+81</option>
+            <option value="{% if edit.Mobile == '+71' %} selected {% endif %}">+71</option>
+            <option value="{% if edit.Mobile == '+61' %} selected {% endif %}">+61</option>
+            <option value="{% if edit.Mobile == '+51' %} selected {% endif %}">+51</option>
+        </select>
+        <input maxlength="13"
+        placeholder="enter your contact number" style="width:95%;" name="mobile" id="mob" required value="{{ edit.Mobile }}">
+         </td>
+  </tr>
+   <td colspan="2">
+  <div align="center">
+    <button type="submit" name="EDIT" style="color: black;" class="btn btn-outline-secondary btn-success">EDIT</button>
+</div>
+    </td>
+</table>
+
+</form>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'Admin/AdminHome.html' %}
+{% block body %}
+<form action="/ViewGuide" method="post">
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">InternalGuide View</h6>
+            </div>
+<table style=color:black;" class="table border="1" align="center">
+  <tr  style="border: 1000px;background: #2bc5d4; color: black;">
+    <th scope="row">Id</th>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Position</th>
+    <th>Email</th>
+    <th>Mobile</th>
+      <th></th>
+      <th></th>
+
+  </tr>
+    {% for i in view %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.Name }}</td>
+    <td>{{ i.Gender }}</td>
+    <td>{{ i.Position }}</td>
+    <td>{{ i.Email }}</td>
+    <td>{{ i.Mobile }}</td>
+    <td><a href="/EditGuide/{{ i.id }}" class="btn btn-success" >Edit</a></td>
+    <td><a href="/DeleteGuide/{{ i.id }}" class="btn btn-danger">Delete</a></td>
+  </tr>
+    {% endfor %}
+</table>
+
+</form>
+{% endblock %}

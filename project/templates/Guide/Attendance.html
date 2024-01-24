@@ -1,0 +1,30 @@
+{% extends 'Guide/InternalsHome.html' %}
+{% block body %}
+
+<form  method="post" action="">
+{% csrf_token %}
+    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Attendance</h6>
+            </div>
+
+  <table class="table" border="1" align="center">
+    <tr>
+      <th width="120" scope="row">Batch Id</th>
+      <td width="108"><label for="batch"></label>
+        <select name="Batch" id="batch"  style="width:95%">
+
+      </select></td>
+    </tr>
+    <tr>
+      <th>Group</th>
+      <td><label for="Grp"></label>
+        <select name="GRP" id="Grp" style="width:95%">
+      </select></td>
+   <td colspan="2">
+    <div align="center">
+    <button type="submit" name="SERACH" style="color: black;" class="btn btn-outline-secondary btn-success">SEARCH</button>
+</div>
+</td>
+  </table>
+</form>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'Admin/AdminHome.html' %}
+{% block body %}
+<form action="/ViewStudent" method="post">
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Students</h6>
+            </div>
+<table class="table" border="1">
+  <tr style="background: #2bc5d4; color: black;">
+    <th scope="row">Id</th>
+    <th>Name</th>
+    <th>Gender</th>
+      <th>DOB</th>
+    <th>Education</th>
+      <th>Batch</th>
+    <th>Email</th>
+    <th>Mobile</th>
+      <th></th>
+      <th></th>
+  </tr>
+    {% for i in students %}
+   
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.Name }}</td>
+    <td>{{ i.Gender }}</td>
+    <td>{{ i.DOB }}</td>
+    <td>{{ i.Education }}</td>
+    <td>{{ i.std_batchid.Batch }}</td>
+
+    <td>{{ i.Email }}</td>
+
+    <td>{{ i.Mobile }}</td>
+    <td><a href="/EditStudent/{{ i.id }}" class="btn btn-success" >Edit</a></td>
+    <td><a href="/DeleteStudent/{{ i.id }}" class="btn btn-danger" >Delete</a></td>
+  </tr>
+   {% endfor %}
+</table>
+
+</form>
+{% endblock %}

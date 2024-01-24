@@ -1,0 +1,75 @@
+{% extends 'Admin/AdminHome.html' %}
+{% block body %}
+<form action="/EditExternal/{{ edid }}" method="post" enctype="multipart/form-data">
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Edit Organization Details Here</h6>
+            </div>
+<table style="width: 600px; height: 300px; background: #2bc5d4; color: black; border-bottom-color: black; border-top-color: black; border-right-color: black; border-left-color: black;"  class="table" border="1" align="center" >
+  <tr>
+    <th scope="row">Name:</th>
+    <td><label for="Name"></label>
+      <input type="text" name="name" id="Name"  placeholder="Enter Your Name"style="width:95%; " value="{{ edit.Name }}"/></td>
+  </tr>
+
+
+  <tr>
+    <th scope="row">Position:</th>
+    <td><label for="pos"></label>
+      <select name="position" size="1" id="pos" style="width:95%;" onchange="adds(this.value)">
+
+      <option value={% if data.Position == 'Others' %} selected {% endif %}>Others</option>
+        <option value="{% if data.Position == 'HR' %} selected {% endif %}>HR"></option>
+        <option value="{% if data.Position == 'Project Coordinator' %} selected {% endif %}>Project Coordinator"></option>
+        <option value="{% if data.Position == 'Software Developer' %} selected {% endif %}>Software Developer"></option>
+
+      </select></td>
+  </tr>
+
+   <tr>
+    <th scope="row">Company-Name:</th>
+    <td><label for="cnm"></label>
+      <input type="text" name="Cnm" id="cnm"  placeholder="Enter Your Name"style="width:95%; " value="{{ edit.CompanyName }}"/></td>
+  </tr>
+    <tr>
+    <th scope="row">Place:</th>
+    <td><label for="Place"></label>
+      <input type="text" name="place" id="Place"  placeholder="Enter Your Place"style="width:95%; " value="{{ edit.Place }}"/></td>
+  </tr>
+    <tr>
+    <th scope="row">Post:</th>
+    <td><label for="post"></label>
+      <input type="text" name="Post" id="post"  placeholder="Enter Your Post"style="width:95%; " value="{{ edit.Post }}"/></td>
+  </tr>
+    <tr>
+    <th scope="row">Pin:</th>
+    <td><label for="Pin"></label>
+      <input type="text" name="pin" id="Pin"  placeholder="Enter Your Pincode"style="width:95%; " value="{{ edit.Pin }}"/></td>
+  </tr>
+
+  <tr>
+    <th scope="row">Email:</th>
+    <td><label for="email"></label>
+      <input type="email" name="email" id="email" placeholder="Enter Your EmailId" style="width:95%;" value="{{ edit.Email }}" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Mobile:</th>
+    <td><select>
+            <option value="{% if edit.Mobile == '+91' %} selected {% endif %}">+91</option>
+            <option value="{% if edit.Mobile == '+81' %} selected {% endif %}">+81</option>
+            <option value="{% if edit.Mobile == '+71' %} selected {% endif %}">+71</option>
+            <option value="{% if edit.Mobile == '+61' %} selected {% endif %}">+61</option>
+            <option value="{% if edit.Mobile == '+51' %} selected {% endif %}">+51</option>
+        </select>
+        <input maxlength="13"
+        placeholder="enter your contact number" style="width:95%;" name="mobile" id="mob" value="{{ edit.Mobile }}">
+         </td>
+  </tr>
+    <td colspan="2">
+  <div align="center">
+    <button type="submit" name="EDIT" style="color: black;" class="btn btn-outline-secondary btn-success">EDIT</button>
+</div>
+    </td>
+</table>
+
+</form>
+{% endblock %}

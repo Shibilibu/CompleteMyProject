@@ -1,0 +1,101 @@
+{% extends 'Admin/AdminHome.html' %}
+{% block body %}
+<form action="/AddStudent_post" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Adding Students</h6>
+            </div>
+
+<table style="width: 600px; height: 300px; background: #2bc5d4; color: black; border-bottom-color: black; border-top-color: black; border-right-color: black; border-left-color: black;"  class="table" border="1" align="center">
+  <tr>
+    <th scope="row">Name:</th>
+    <td><label for="Name"></label>
+      <input type="text" name="name" id="Name"  placeholder="Enter Your Name"style="width:95%; " required/></td>
+  </tr>
+  <tr>
+    <th scope="row">Gender:</th>
+    <label for="gender"></label>
+      <td colspan="2"> <table width="100">
+        <tr>
+          <td><label>
+            <input type="radio" name="Gender" value="Male" id="Gender_0" />
+            Male</label></td>
+        </tr>
+
+        <tr>
+          <td><label>
+            <input type="radio" name="Gender" value="Female" id="Gender_1" />
+            Female</label></td>
+        </tr>
+        <tr>
+          <td><label>
+            <input type="radio" name="Gender" value="Others" id="Gender_2" />
+            Others</label></td>
+        </tr>
+      </table></td>
+  </tr>
+    <tr>
+    <th scope="row">DateOfBirth:</th>
+    <td><label for="dob"></label>
+      <input type="date" name="DOB" id="dob"  placeholder="Enter Your Name"style="width:95%; " required pattern="\d{1,2}/\d{1,2}/\d{4}"/></td>
+  </tr>
+ 
+  <tr>
+    <th scope="row">Education:</th>
+    <td><label for="ed"></label>
+      <select name="Education" size="1" id="ed" style="width:95%;" required>
+
+      <option value="Other">Other</option>
+        <option value="BE">BE</option>
+        <option value="Bcom">Bcom</option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+        <option value=""></option>
+
+      </select></td>
+  </tr>
+    <tr>
+    <th scope="row">Batch:</th>
+    <td><label for="batch"></label>
+      <select name="Batch" size="1" id="batch" style="width:95%;" required>
+
+       {% for i in data %}
+      <option value="{{ i.id }}">{{ i.Batch }}</option>
+
+          {% endfor %}
+      </select></td>
+  </tr>
+       <tr>
+    <th scope="row">Password:</th>
+    <td><label for="pass"></label>
+      <input type="Password" name="Pass" id="pass" placeholder="Enter Your Password" style="width:95%;" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/></td>
+  </tr>
+
+  <tr>
+    <th scope="row">Email:</th>
+    <td><label for="email"></label>
+      <input type="email" name="email" id="email" placeholder="Enter Your EmailId" style="width:95%;"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/></td>
+  </tr>
+  <tr>
+    <th scope="row">Mobile:</th>
+    <td><select>
+            <option value="code">+91</option>
+            <option value="code">+81</option>
+            <option value="code">+71</option>
+            <option value="code">+61</option>
+            <option value="code">+51</option>
+        </select>
+        <input maxlength="13"
+        placeholder="enter your contact number" style="width:95%;" name="mobile" id="mob" required>
+         </td>
+  </tr>
+  <td colspan="2">
+      <div align="center">
+          <button type="submit" value="add" style="color: black" class="btn btn-outline-secondary btn-success" >ADD</button>
+      </div>
+  </td>
+</table>
+
+</form>
+{% endblock %}

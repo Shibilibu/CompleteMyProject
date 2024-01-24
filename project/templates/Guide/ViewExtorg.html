@@ -1,0 +1,32 @@
+{% extends 'Guide/InternalsHome.html' %}
+{% block body %}
+
+<form action="/ViewExternalOrg" method="post">
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">External Organization</h6>
+            </div>
+<table class="table" border="1">
+  <tr style="background: #2bc5d4; color: black;">
+    <th scope="row">Id</th>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Position</th>
+      <th>CompanyName</th>
+        <th>Address</th>
+      <th></th>
+  </tr>
+   {% for i in externalorg %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.Name }}</td>
+    <td>{{ i.Gender }}</td>
+    <td>{{ i.Position }}</td>
+    <td>{{ i.CompanyName }}</td>
+    <td>{{ i.Place }},{{ i.Post }},{{ i.Pin }}</td>
+  <td><a href="/Assign_groupsto_external/{{ i.id }}" class="btn  btn-success">Assign Group</a></td>
+  </tr>
+    {% endfor %}
+</table>
+
+</form>
+{% endblock %}

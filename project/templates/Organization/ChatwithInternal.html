@@ -1,0 +1,41 @@
+{% extends 'Organization/ExtetrnalHome.html' %}
+{% block body %}
+    <link href="/static/chatwithinternal.css" rel="stylesheet">
+    <form action="/ChatwithInternals_post/{{ cid }}" method="post">
+{% csrf_token %}
+ <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Chat</h6>
+            </div>
+ <div  class="container-fluid bg-dark text-light chat-internal " style="width: 100%; height: 100%">
+   <div  class="container py-18" >
+<table class="table" border="0" align="center">
+<tr>
+			<td colspan="2">&nbsp;</td>
+  		</tr>
+		{%for i in data%}
+		{%if i.SendType == 'Internal'%}
+		<tr align="left" >
+			<td  colspan="2" style= width:0;height:0;border-style:solid;border-width:0 10px 10px 10px; ><span class="internalchat">{{i.Message}}<br></span></td>
+  		</tr>
+		{% elif i.SendType == 'External' %}
+
+		<tr align="right">
+            <td  colspan="2"  style= width:0;height:0;border-style:solid;border-width:0 10px 10px 10px;><span class="Externalchat">{{i.Message}}<br></span></td>
+  		</tr>
+		{%endif%}
+		{%endfor%}
+		<tr>
+			<td colspan="2">&nbsp;</td>
+  		</tr>
+    <tr><td   colspan="2" class="center"><input type="text"  style="width: 90%; background: #b6effb;" id="text"  placeholder="Type a message" name="msg" required  />
+     <button type="submit" name="SEND" class="btn btn-success"> Send</button> </td></tr>
+	</table>
+
+
+
+
+
+ </div>
+    </div>
+</form>
+{% endblock %}

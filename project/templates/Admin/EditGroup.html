@@ -1,0 +1,40 @@
+{% extends 'Admin/AdminHome.html' %}
+{% block body %}
+<form action="/EditGroup_post/{{ gid }}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Edit Group Allocation</h6>
+            </div>
+<table  style="width: 600px; height: 200px; background: #2bc5d4; color: black; border-bottom-color: black; border-top-color: black; border-right-color: black; border-left-color: black;"  class="table" border="4" align="center">
+  <tr>
+    <th scope="row">GroupNumber:</th>
+    <td><label for="number"></label>
+      <input type="text" name="Number" id="number" style="width:95%; " value="{{ edit.GroupNumber }}" required/></td>
+  </tr>
+  
+    <tr>
+    <th scope="row">TopicName:</th>
+    <td><label for="dob"></label>
+      <input type="text" name="topic" id="top" style="width:95%; " value="{{ edit.TopicName }}" required/></td>
+
+  </tr>
+
+ 
+
+
+  <tr>
+    <th scope="row">Email:</th>
+    <td><label for="eml"></label>
+      <input type="email" name="Email" id="eml"  style="width:95%;" value="{{ edit.Email }}" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/></td>
+  </tr>
+
+ <td colspan="2">
+<div align="center">
+    <button type="submit" name="EDIT" style="color: black;" class="btn btn-outline-secondary btn-success">EDIT</button>
+
+</div>
+    </td>
+</table>
+
+</form>
+{% endblock %}

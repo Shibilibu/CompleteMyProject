@@ -1,0 +1,16 @@
+{% extends 'Admin/AdminHome.html' %}
+{% block body %}
+<form action="/remark_post/{{ rid }}" method="post">
+<table style="width: 600px; height: 150px; background: #2bc5d4; color: black; border-bottom-color: black; border-top-color: black; border-right-color: black; border-left-color: black;"  class="table" border="1" align="center">
+  <tr>
+    <th scope="row" >Remarks</th>
+    <td><textarea name="rem" id="rm" cols="" rows="" style="width:100%; " required></textarea></td>
+  </tr>
+  <td colspan="2"><div align="center">
+    <button type="submit" name="ADD" style="color: black;" class="btn btn-outline-secondary btn-success">ADD</button>
+</div></td>
+</table>
+</form>
+{% endblock %}
+
+

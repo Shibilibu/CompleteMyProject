@@ -1,0 +1,30 @@
+{% extends 'Admin/AdminHome.html' %}
+{% block body %}
+<form action="/EditScheduleSubmission_post/{{ edid }}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Edit Schedule Submission here</h6>
+            </div>
+<table style="width: 600px; height: 150px; background: #2bc5d4; color: black; border-bottom-color: black; border-top-color: black; border-right-color: black; border-left-color: black;"  class="table" border="1" align="center">
+  
+ 
+  <tr>
+    <th scope="row">Subject:</th>
+    <td><label for="topic"></label>
+       <input type="text" name="Subject" id="subject" style="width:99%; " value="{{ edit.Subject }}"/></td>
+  </tr>
+<tr>
+    <th scope="row">Date:</th>
+    <td><label for="Name"></label>
+      <input type="text" name="date" id="DATE" style="width:99%; " value="{{ edit.Date }}"/></td>
+  </tr>
+   <td colspan="2">
+<div align="center">
+    <button type="submit" name="EDIT"  class="btn btn-success">EDIT</button>
+
+</div>
+    </td>
+</table>
+
+</form>
+{% endblock %}

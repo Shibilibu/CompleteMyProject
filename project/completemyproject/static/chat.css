@@ -1,0 +1,20 @@
+.internal{
+    color: black;
+	background: #bae3d7;
+	padding: 20px;
+	border-radius: 5px;
+}
+
+.External{
+	color: #000001;
+	background: #b73770;
+	padding: 20px;
+	border-radius: 5px;
+}
+
+.chat-background {
+	background-image: url("../static/Project.jpg");
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-attachment: fixed;
+}

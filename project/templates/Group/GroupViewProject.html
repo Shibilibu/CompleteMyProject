@@ -1,0 +1,22 @@
+{% extends 'Group/GroupHome.html' %}
+{% block body %}
+<form action="/" method="post">
+<table class="table" border="1">
+  <tr style="background: #2bc5d4; color: black;">
+    <th scope="row">Id</th>
+    <th>Subject</th>
+    <th>Date</th>
+    
+  </tr>
+   {% for i in  project %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.Subject }}</td>
+    <td>{{ i.Date }}</td>
+    
+  </tr>
+   {% endfor %}
+</table>
+
+</form>
+{% endblock %}

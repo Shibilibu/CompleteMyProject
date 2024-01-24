@@ -1,0 +1,89 @@
+{% extends 'Guide/InternalsHome.html' %}
+{% block body %}
+    <script type="text/javascript">
+var xmlHttp;
+            function att(eid){
+               //alert(eid);
+                if (typeof XMLHttpRequest != "undefined"){
+                xmlHttp= new XMLHttpRequest();
+                }
+                else if (window.ActiveXObject){
+                    xmlHttp= new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                if (xmlHttp==null){
+                    alert("Browser does not support XMLHTTP Request")
+                    return;
+                }
+                var url="/viewGroup/"
+                url += eid
+                xmlHttp.onreadystatechange = progressinternal;
+                xmlHttp.open("GET", url, true);
+                xmlHttp.send(null);
+            }
+
+
+            function progressinternal(){
+                if(xmlHttp.readyState==4 || xmlHttp.readyState=="complete"){
+                    document.getElementById("Grp").innerHTML=xmlHttp.responseText
+
+                }
+
+            }
+</script>
+
+    <form  method="post" action="/attendance">
+{% csrf_token %}
+
+
+  <table style="width: 600px; height: 150px; background: #2bc5d4; color: black; border-bottom-color: black; border-top-color: black; border-right-color: black; border-left-color: black;"  class="table" border="1" align="center">
+    <tr>
+      <th>Batch</th>
+      <td><label for="batch"></label>
+        <select name="Batch" id="batch"  style="width:95%" onchange="att(this.value)">
+        <option value="">--SELECT</option>
+            {% for i in btch %}
+            <option value="{{ i.id }}">{{ i.Batch  }}</option>
+    {% endfor %}
+      </select>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Group</th>
+      <td><label for="Grp"></label>
+        <select name="GRPs" id="Grp" style="width:95%">
+      </select></td>
+    </tr>
+   <td colspan="2">
+    <div align="center">
+    <button type="submit" name="SEARCH" style="color: black;" class="btn btn-outline-secondary btn-success">SEARCH</button>
+</div>
+</td>
+  </table>
+</form>
+
+<form action="" method="post">
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Attendance</h6>
+            </div>
+<table style="width: 600px; border-left-color: black; border-right-color: black; border-top-color: black; border-bottom-color: black; color:black;" class="table" border="4" align="center">
+  <tr style="background: #2bc5d4; color: black;">
+    <th scope="row">Id</th>
+    <th>Date</th>
+    <th>File</th>
+      <th></th>
+    
+  </tr>
+   {% for i in att %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.Date }}</td>
+    <td>{{ i.File }}</td>
+     <td><a href="internal_attendanceremarks/{{ i.id }}" class="btn btn-success" >Remark</a></td>
+
+    
+  </tr>
+   {% endfor %}
+</table>
+
+</form>
+{% endblock %}

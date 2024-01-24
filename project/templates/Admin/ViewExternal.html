@@ -1,0 +1,41 @@
+{% extends 'Admin/AdminHome.html' %}
+{% block body %}
+<form action="/ViewExternal" method="post">
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Externals</h6>
+            </div>
+<table class="table" border="1">
+  <tr style="background: #2bc5d4; color: black;">
+    <th scope="row">Id</th>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Position</th>
+      <th>CompanyName</th>
+        <th>Address</th>
+
+
+    <th>Email</th>
+    <th>Mobile</th>
+      <th></th>
+      <th></th>
+  </tr>
+   {% for i in external %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.Name }}</td>
+    <td>{{ i.Gender }}</td>
+    <td>{{ i.Position }}</td>
+      <td>{{ i.CompanyName }}</td>
+
+      <td>{{ i.Place }},{{ i.Post }},{{ i.Pin }}</td>
+
+    <td>{{ i.Email }}</td>
+    <td>{{ i.Mobile }}</td>
+    <td><a href="/EditExternal/{{ i.id }}" class="btn btn-success" >Edit</a></td>
+    <td><a href="/DeleteExternal/{{ i.id }}" class="btn btn-danger" >Delete</a></td>
+  </tr>
+    {% endfor %}
+</table>
+
+</form>
+{% endblock %}

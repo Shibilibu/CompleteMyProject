@@ -1,0 +1,32 @@
+{% extends 'Organization/ExtetrnalHome.html' %}
+{% block body %}
+<form action="/ViewGroups" method="post">
+<table class="table" border="1">
+  <tr style="background: #2bc5d4; color: black;">
+    <th scope="row">Id</th>
+    <th>GroupNumber</th>
+      <th>Batch</th>
+    <th>TopicName</th>
+    <th>Email</th>
+          <th>Internal</th>
+      <th></th>
+      <th></th>
+      <th></th>
+  </tr>
+   {% for i in group %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.GroupNumber }}</td>
+      <td>{{ i.GrpBatchid.Batch }}</td>
+    <td>{{ i.TopicName }}</td>
+    <td>{{ i.Email }}</td>
+      <td>{{ i.Grp_Internal_id.Name }}</td>
+  <td><a href="/AttendenceUpdate/{{ i.id }}"  style="color: black;" class="btn btn-outline-secondary btn-success">UpdateAttandence</a> </td>
+  <td><a href="/Workprogress/{{ i.id }}" style="color: black;" class="btn btn-outline-primary btn-danger" >UpdateWorkProgress</a> </td>
+   <td><a href="/ChatwithInternals/{{ i.Grp_Internal_id.id }}" style="color: black;" class="btn btn-outline-primary btn-in" >ChatWithInternal</a> <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2"><span class="visually-hidden-focusable">unread messages</span></span></td>
+       </tr>
+  {% endfor %}
+</table>
+
+</form>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'Admin/AdminHome.html' %}
+{% block body %}
+<form action="/AddMembers_post/{{ gid }}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Adding Members</h6>
+            </div>
+<table   style="width: 600px; height: 50px; background: #2bc5d4; color: black; border-bottom-color: black; border-top-color: black; border-right-color: black; border-left-color: black;"  class="table" border="1" align="center">
+  
+ 
+  <tr>
+    <th>Members:</th>
+    <td><label for="mbr"></label>
+      <select name="member" size="1" id="mbr" style="width:95%;"required>
+          {% for i in member %}
+        <option value="{{ i.id }}">{{ i.Name  }}</option>
+          {% endfor %}
+   
+      </select></td>
+  </tr>
+     
+<td colspan="2">
+<div align="center">
+    <button type="submit" name="add" style="color: black;" class="btn btn-outline-secondary btn-success">ADD</button>
+
+</div>
+    </td>
+</table>
+
+</form>
+{% endblock %}
